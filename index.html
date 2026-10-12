@@ -4,8 +4,8 @@
 <title>MS FASHION</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f7f8fb;--card:#fff;--ink:#1d2433;--mute:#667085;--gold:#e0709f;--blue:#2d72b8;--beige:#e8ecf3;--line:#d9dee8;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12151c;--card:#1b2029;--ink:#eef1f6;--mute:#9aa4b5;--beige:#232a36;--line:#323a48}}
+:root{--bg:#f7f8fb;--card:#fff;--ink:#1d2433;--mute:#667085;--gold:#d8b06e;--gold-deep:#b98a3c;--blue:#2d72b8;--beige:#e8ecf3;--line:#d9dee8;--shadow:rgba(23,28,35,.12);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12151c;--card:#1b2029;--ink:#eef1f6;--mute:#9aa4b5;--beige:#232a36;--line:#323a48}} 
 :root[data-theme="dark"]{--bg:#12151c;--card:#1b2029;--ink:#eef1f6;--mute:#9aa4b5;--beige:#232a36;--line:#323a48}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.6 Jost,system-ui,sans-serif}
@@ -17,15 +17,15 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var
 .top{display:flex;align-items:center;gap:14px;padding:12px 0;flex-wrap:wrap}
 .logo{font-size:26px;letter-spacing:.14em;cursor:pointer}.logo b{color:var(--gold)}
 .brand-logo{display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none;min-width:180px}
-.brand-mark{position:relative;width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#d3a6b7,#a8829e 40%,#6d9cc7 100%);box-shadow:0 10px 18px rgba(41,62,90,.15);display:grid;place-items:center;overflow:hidden;border:1px solid rgba(255,255,255,.45)}
-.brand-mark::before{content:"";position:absolute;inset:6px;border:2px solid rgba(255,255,255,.56);border-radius:10px}
-.brand-mark span{position:relative;font-family:"Cormorant Garamond",Georgia,serif;font-size:24px;font-weight:700;letter-spacing:.08em;color:#fff;transform:translateY(-1px)}
-.brand-text{font-family:"Cormorant Garamond",Georgia,serif;font-size:30px;line-height:1;color:#1d2433;letter-spacing:.12em;font-weight:600;text-transform:uppercase}
-.brand-text b{color:var(--gold)}
-.hero-brand{display:flex;align-items:center;justify-content:center;gap:14px;padding:14px 20px;border-radius:999px;background:rgba(255,255,255,.18);backdrop-filter:blur(4px);box-shadow:0 16px 28px rgba(41,62,90,.12);border:1px solid rgba(255,255,255,.28)}
-.hero-brand .brand-mark{width:64px;height:64px;border-radius:18px}
+.brand-mark{position:relative;width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,#f7e6c4,#d6b46d 38%,#9b7741 100%);box-shadow:0 8px 18px rgba(44,34,15,.16);display:grid;place-items:center;overflow:hidden;border:1px solid rgba(255,255,255,.7)}
+.brand-mark::before{content:"";position:absolute;inset:6px;border:2px solid rgba(255,255,255,.7);border-radius:10px}
+.brand-mark span{position:relative;font-family:"Cormorant Garamond",Georgia,serif;font-size:24px;font-weight:700;letter-spacing:.08em;color:#1d2433;transform:translateY(-1px)}
+.brand-text{font-family:"Cormorant Garamond",Georgia,serif;font-size:30px;line-height:1;color:#1d2433;letter-spacing:.12em;font-weight:600;text-transform:uppercase;white-space:nowrap}
+.brand-text b{color:var(--gold-deep)}
+.hero-brand{display:flex;align-items:center;justify-content:center;gap:16px;padding:14px 20px;border-radius:999px;background:rgba(255,255,255,.22);backdrop-filter:blur(4px);box-shadow:0 16px 28px rgba(41,62,90,.12);border:1px solid rgba(255,255,255,.28)}
+.hero-brand .brand-mark{width:70px;height:70px;border-radius:18px}
 .hero-brand .brand-mark span{font-size:30px}
-.hero-brand .brand-text{font-size:44px;letter-spacing:.08em}
+.hero-brand .brand-text{font-size:42px;letter-spacing:.08em}
 nav{display:flex;gap:18px;flex:1;flex-wrap:wrap}nav a{cursor:pointer;text-decoration:none;font-size:14px;letter-spacing:.05em;text-transform:uppercase;padding:2px 0;border-bottom:1px solid transparent;transition:.2s}nav a:hover{border-color:var(--gold);color:var(--gold)}
 .tools{display:flex;gap:8px;align-items:center}
 .tools input{border:1px solid var(--line);background:var(--card);padding:7px 12px;border-radius:20px;width:150px}
@@ -72,8 +72,12 @@ footer{background:#1d2a44;color:#d5dbe8;padding:40px 0;font-size:14px}footer a{c
 <div><b>Policies</b><a onclick="go('info','Shipping Policy')">Shipping</a><a onclick="go('info','Return and Exchange Policy')">Returns &amp; Exchange</a><a onclick="go('info','Privacy Policy')">Privacy Policy</a></div>
 <div><b>Store</b><a onclick="go('info','About Us')">About Us</a><a onclick="go('info','Admin')">Admin</a></div></div></footer>
 <script>
+function renderBrandLogo(target){
+  const el=document.querySelector(target);
+  if(!el) return;
+  el.innerHTML = '<div class="brand-mark"><span>MS</span></div><div class="brand-text">MS <b>FASHION</b></div>';
+}
 const LOGO="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBAUEBAYFBQUGBgYHCQ4JCQgICRINDQoOFRIWFhUSFBQXGiEcFxgfGRQUHScdHyIjJSUlFhwpLCgkKyEkJST/2wBDAQYGBgkICREJCREkGBQYJCQkJCQkJCQkJCQkJ/2wBDAw0ODhESExITFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFx8WGQ==";
-function renderBrandLogo(target){const el=document.querySelector(target); if(!el)return; el.innerHTML=`<div class="brand-mark"><span>MS</span></div><div class="brand-text">MS <b>FASHION</b></div>`;}
 const g=x=>x.id%2?"linear-gradient(145deg,#f7b2d0,#e0709f)":"linear-gradient(145deg,#6aa2d8,#2d72b8)";
 const BRAND="MS FASHION",BACKEND=null,FREE=5000,SHIP=250;
 const P=[
