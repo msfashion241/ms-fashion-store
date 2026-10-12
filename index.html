@@ -16,7 +16,16 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var
 .w{max-width:1200px;margin:auto;padding:0 18px}
 .top{display:flex;align-items:center;gap:14px;padding:12px 0;flex-wrap:wrap}
 .logo{font-size:26px;letter-spacing:.14em;cursor:pointer}.logo b{color:var(--gold)}
-.lg{width:110px;height:52px;object-fit:contain;display:block;cursor:pointer;filter:drop-shadow(0 4px 8px rgba(0,0,0,.08))}
+.brand-logo{display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none;min-width:180px}
+.brand-mark{position:relative;width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#d3a6b7,#a8829e 40%,#6d9cc7 100%);box-shadow:0 10px 18px rgba(41,62,90,.15);display:grid;place-items:center;overflow:hidden;border:1px solid rgba(255,255,255,.45)}
+.brand-mark::before{content:"";position:absolute;inset:6px;border:2px solid rgba(255,255,255,.56);border-radius:10px}
+.brand-mark span{position:relative;font-family:"Cormorant Garamond",Georgia,serif;font-size:24px;font-weight:700;letter-spacing:.08em;color:#fff;transform:translateY(-1px)}
+.brand-text{font-family:"Cormorant Garamond",Georgia,serif;font-size:30px;line-height:1;color:#1d2433;letter-spacing:.12em;font-weight:600;text-transform:uppercase}
+.brand-text b{color:var(--gold)}
+.hero-brand{display:flex;align-items:center;justify-content:center;gap:14px;padding:14px 20px;border-radius:999px;background:rgba(255,255,255,.18);backdrop-filter:blur(4px);box-shadow:0 16px 28px rgba(41,62,90,.12);border:1px solid rgba(255,255,255,.28)}
+.hero-brand .brand-mark{width:64px;height:64px;border-radius:18px}
+.hero-brand .brand-mark span{font-size:30px}
+.hero-brand .brand-text{font-size:44px;letter-spacing:.08em}
 nav{display:flex;gap:18px;flex:1;flex-wrap:wrap}nav a{cursor:pointer;text-decoration:none;font-size:14px;letter-spacing:.05em;text-transform:uppercase;padding:2px 0;border-bottom:1px solid transparent;transition:.2s}nav a:hover{border-color:var(--gold);color:var(--gold)}
 .tools{display:flex;gap:8px;align-items:center}
 .tools input{border:1px solid var(--line);background:var(--card);padding:7px 12px;border-radius:20px;width:150px}
@@ -32,7 +41,6 @@ section{padding:44px 0}h2{font-size:34px;margin-bottom:20px;text-align:center}
 .cat{background:var(--beige);padding:34px 10px;text-align:center;cursor:pointer;font-family:"Cormorant Garamond",Georgia,serif;font-size:22px;border:1px solid var(--line);transition:.25s}.cat:hover{background:#eef1f6}
 .pc{background:var(--card);border:1px solid var(--line);cursor:pointer;transition:.25s;position:relative}.pc:hover{transform:translateY(-4px);box-shadow:0 10px 24px #0002}
 .img{aspect-ratio:3/4;display:grid;place-items:center;font:600 60px "Cormorant Garamond",Georgia,serif;color:#ffffffcc;letter-spacing:.05em}
-.hero-art{display:block;width:min(100%,410px);aspect-ratio:1.55;object-fit:contain;margin:0 auto;border-radius:50%;background:transparent;filter:drop-shadow(0 12px 28px rgba(0,0,0,.12))}
 .pi{padding:12px}.pi h3{font-size:19px}.old{text-decoration:line-through;color:var(--mute);margin-left:6px;font-size:13px}
 .tag{position:absolute;top:10px;left:10px;background:var(--gold);color:#fff;font-size:11px;padding:2px 8px;letter-spacing:.08em}
 .heart{position:absolute;top:8px;right:8px;background:var(--card);border:0;border-radius:50%;width:32px;height:32px}
@@ -51,7 +59,7 @@ footer{background:#1d2a44;color:#d5dbe8;padding:40px 0;font-size:14px}footer a{c
 #v{animation:fi .4s}@keyframes fi{from{opacity:0;transform:translateY(8px)}}
 </style></head><body>
 <div class="bar">Free delivery over ₨ 5,000 · Eid Collection up to 30% OFF</div>
-<header><div class="w top"><img class="lg" alt="MS FASHION" src="" onclick="go('home')">
+<header><div class="w top"><div class="brand-logo lg" role="button" tabindex="0" aria-label="MS FASHION" onclick="go('home')"></div>
 <nav id="nav"></nav>
 <div class="tools"><input id="q" placeholder="Search…" aria-label="Search" onkeydown="if(event.key=='Enter'){S.q=this.value;go('shop')}">
 <button class="ic" title="Account" onclick="go('info','Account')">👤</button>
@@ -65,7 +73,7 @@ footer{background:#1d2a44;color:#d5dbe8;padding:40px 0;font-size:14px}footer a{c
 <div><b>Store</b><a onclick="go('info','About Us')">About Us</a><a onclick="go('info','Admin')">Admin</a></div></div></footer>
 <script>
 const LOGO="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBAUEBAYFBQUGBgYHCQ4JCQgICRINDQoOFRIWFhUSFBQXGiEcFxgfGRQUHScdHyIjJSUlFhwpLCgkKyEkJST/2wBDAQYGBgkICREJCREkGBQYJCQkJCQkJCQkJCQkJ/2wBDAw0ODhESExITFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFhUVFx8WGQ==";
-const headerLogo=document.querySelector('.lg'); if(headerLogo) headerLogo.src=LOGO;
+function renderBrandLogo(target){const el=document.querySelector(target); if(!el)return; el.innerHTML=`<div class="brand-mark"><span>MS</span></div><div class="brand-text">MS <b>FASHION</b></div>`;}
 const g=x=>x.id%2?"linear-gradient(145deg,#f7b2d0,#e0709f)":"linear-gradient(145deg,#6aa2d8,#2d72b8)";
 const BRAND="MS FASHION",BACKEND=null,FREE=5000,SHIP=250;
 const P=[
@@ -99,9 +107,9 @@ function go(v,a){window.scrollTo(0,0);cur=[v,a];draw()}let cur=["home"];
 function draw(){const[v,a]=cur,m=$("v");save();m.style.animation="none";m.offsetHeight;m.style.animation="";
 if(v=="home")m.innerHTML=home();else if(v=="shop")m.innerHTML=shop();else if(v=="prod")m.innerHTML=prod(a);
 else if(v=="checkout")m.innerHTML=checkout();else m.innerHTML=info(a)
-const heroImg=document.querySelector('.hero-art'); if(heroImg) heroImg.src=LOGO;
-const headerLogo2=document.querySelector('.lg'); if(headerLogo2) headerLogo2.src=LOGO;}
-function home(){return`<div class="hero"><div class="w hg"><div><small>Eid · Wedding · Winter</small><h1>Discover Your Style</h1><p>Lawn, luxury formals and everyday ready-to-wear, made for Pakistan.</p><button class="btn" onclick="nav('Shop All')">Shop Now</button></div><div><img class="hero-art" src="${LOGO}" alt="MS FASHION Logo"></div></div></div>
+renderBrandLogo('.lg');
+const heroBrand=document.querySelector('.hero-brand'); if(heroBrand) renderBrandLogo('.hero-brand');}
+function home(){return`<div class="hero"><div class="w hg"><div><small>Eid · Wedding · Winter</small><h1>Discover Your Style</h1><p>Lawn, luxury formals and everyday ready-to-wear, made for Pakistan.</p><button class="btn" onclick="nav('Shop All')">Shop Now</button></div><div class="hero-brand" aria-label="MS FASHION"></div></div></div>
 <section class="w"><h2>Shop by Category</h2><div class="grid">${CATS.map(c=>`<div class="cat" onclick="nav('${c}')">${c}</div>`).join("")}</div></section>
 <section class="w"><h2>New Arrivals</h2><div class="grid">${P.filter(x=>x.nw).map(card).join("")}</div></section>
 <div class="band"><h2>Season Sale</h2><p>Up to 30% off selected lawn, khaddar and kids' wear.</p><button class="btn o" style="color:#fff;border-color:#fff" onclick="nav('Sale')">View Sale</button></div>
@@ -144,5 +152,6 @@ for(const k in v){const g=v[k].test($(k).value.trim());$("e_"+k).textContent=g?"
 $("pl").textContent=ok?(cartL.length?"Order NOT placed: no backend or payment method is connected yet." : "Your cart is empty."):""}
 const INFO={"About Us":"Write your brand story here.","Contact Us":"Add your phone, email, address and a contact form (form needs email service).","FAQs":"Add your questions and answers here.","Shipping Policy":"Explain delivery times, charges and regions.","Return and Exchange Policy":"List return windows and conditions.","Privacy Policy":"Explain what data is collected and how it is used.","Account":"Registration and login need a backend with secure authentication.","Order Tracking":"Tracking needs the orders database. Not connected.","Admin":"Admin dashboard (products, inventory, orders) needs a backend and secure login."};
 function info(t){return`<section class="w" style="max-width:760px"><h2>${t}</h2><p>${INFO[t]||""}</p><div class="note">Still to configure for a live store: database (products, users, orders, stock), payments, shipping rules, real reviews and email setup.</div></section>`}
+renderBrandLogo('.lg');
 draw();
 </script></body></html>
